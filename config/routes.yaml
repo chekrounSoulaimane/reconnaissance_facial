@@ -1,0 +1,7 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+#addUser:
+#    path: /MainController/addUser
+#    controller: App\Controller\MainController::addUser

@@ -1,0 +1,17 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        photos:
+            uri_prefix:         '%app.path.photos%'
+            upload_destination: '%kernel.project_dir%/public%app.path.photos%'
+            directory_namer:
+                service: vich_uploader.namer_directory_property
+                options: { property: 'cin', transliterate: true}
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+            

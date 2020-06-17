@@ -1,0 +1,20 @@
+#easy_admin:
+#    entities:
+#        # List the entity class name you want to manage
+#        - App\Entity\Utilisateur
+#        - App\Entity\Category
+#        - App\Entity\User
+# config/packages/easy_admin.yaml
+
+# config/packages/easy_admin.yaml
+easy_admin:
+    entities:
+        Utilisateur:
+            # ...
+            list:
+                fields:
+                    - { property: 'image', template: 'vich_uploader_image.html.twig' }
+            class: AppBundle\Entity\Utilisateur
+            form:
+                fields:
+                    - { property: 'imageFile', type: 'vich_image' }      

@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+        <header id="header" class="fixed-top ">
+        <div class="container d-flex align-items-center">
+
+        <h1 class="logo mr-auto"><a href="{{ path('home') }}">recognized</a></h1>
+
+        <nav class="nav-menu d-none d-lg-block">
+            <ul>
+                <li><a href="{{ path('home') }}">Home</a></li>
+                <li class="drop-down active"><a href="">Reconnaissance facial</a>
+                    <ul>
+                        <li><a href="{{ path('image') }}">Image</a></li>
+                        <li><a href="{{ path('video') }}">Video</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ path('table-utilisateur') }}">Table d'utilisateur</a></li>
+
+            </ul>
+        </nav>
+
+        <a href="{{ path('add-user') }}" class="get-started-btn scrollto">Ajouter utilisateur</a>
+
+        </div>
+    </header>        
+
+	<div style="height: 72px; background-color: #37517e;"></div>
+
+    <main id="main">
+
+        <section id="getStarted" class="getStarted">
+            <div class="container text-center" data-aos="fade-up">
+
+                <div id="detection-object" class="detection-object-container">
+                    <img id="object-to-detect" src="" alt=" Choisir une image"></img>
+                    <input type="file" id="imgUpload" accept="image/*" style="display: none;">
+                </div>
+                <div>
+                    <button class="btn btn-success choice-btn" id="open-file-dialog" type="submit">Parcourir</button>
+                    <button class="btn btn-primary choice-btn" id="btn-start" type="submit">Start</button>
+                </div>
+                <div id="users-info"></div>
+
+            </div>
+        </section>
+
+        <section id="getStarted" class="getStarted">
+            <div class="container text-center" data-aos="fade-up"> 
+                <div id="users-info-section"></div>
+                </div> 
+            </div>
+        </section>     
+
+    </main>
+
+    <div id="wrapper-show-more-container" class="wrapper-container fadeInDown">
+        <div id="user-info-wrapper" class="wrapper fadeInDown">
+            <div class="wrapper-content">
+                <div class="fadeIn first">
+                    <img src="" id="wrapper-img" alt="Photo utilisateur">
+                </div>
+                <div class="wrapper-body fadeIn second">
+                    <div class="wrapper-body fadeIn third">
+                        <div class="wrapper-body-element">Cin:  <label>test</label></div>
+                        <div class="wrapper-body-element">Nom:  <label>test</label></div>
+                        <div class="wrapper-body-element">Prenom:  <label>test</label></div>
+                        <div class="wrapper-body-element">Age:  <label>test</label></div>
+                        <div class="wrapper-body-element">Adresse:  <label>test</label></div>
+                    </div>
+                </div>
+                <div class="wrapper-footer">
+                    <button id="close-wrapper">fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ asset('build/js/Utilisateur.js') }}"></script>
+    <script>
+
+        var usernames = [];
+
+        {% for user in usernames %}
+            usernames.push( "{{ user }}" );
+        {% endfor %}
+
+        var utilisateurs = [];
+
+        {% for utilisateur in utilisateurs %}
+            var utilisateur = new Utilisateur("{{ utilisateur.id }}", "{{ utilisateur.cin }}", "{{ utilisateur.nom }}", "{{ utilisateur.prenom }}", "{{ utilisateur.age }}", "{{ utilisateur.adresse }}");
+            utilisateurs.push(utilisateur);
+        {% endfor %}
+
+    </script>
+    <script src="{{ asset('build/vendor/face-api/face-api.min.js') }}"></script>
+    <script src="{{ asset('build/js/imageJs.js') }}"></script>
+
+{% endblock %}

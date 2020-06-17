@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+        <header id="header" class="fixed-top ">
+        <div class="container d-flex align-items-center">
+
+        <h1 class="logo mr-auto"><a href="{{ path('home') }}">recognized</a></h1>
+
+        <nav class="nav-menu d-none d-lg-block">
+            <ul>
+                <li><a href="{{ path('home') }}">Home</a></li>
+                <li class="drop-down"><a href="">Reconnaissance facial</a>
+                    <ul>
+                        <li><a href="{{ path('image') }}">Image</a></li>
+                        <li><a href="{{ path('video') }}">Video</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ path('table-utilisateur') }}">Table d'utilisateur</a></li>
+
+            </ul>
+        </nav>
+
+        <a href="{{ path('add-user') }}" class="get-started-btn scrollto">Ajouter utilisateur</a>
+
+        </div>
+    </header> 
+
+	<div style="height: 72px; background-color: #37517e;"></div>
+
+    <main id="main">
+
+        <section id="getStarted" class="getStarted">
+            <div class="container" data-aos="fade-up">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="card">
+                        <h5 class="card-header">Validation Types</h5>
+                        <div class="card-body">
+                            {{ form_start(utilisateurFrom) }}
+                                <div class="form-group row">
+                                    <label class="col-12 col-sm-3 col-form-label text-sm-right">CIN</label>
+                                    <div class="col-12 col-sm-8 col-lg-6">
+                                        {{ form_widget(utilisateurFrom.cin) }}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-12 col-sm-3 col-form-label text-sm-right">Nom</label>
+                                    <div class="col-12 col-sm-8 col-lg-6">
+                                        {{ form_widget(utilisateurFrom.nom) }}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-12 col-sm-3 col-form-label text-sm-right">Prenom</label>
+                                    <div class="col-12 col-sm-8 col-lg-6">
+                                        {{ form_widget(utilisateurFrom.prenom) }}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-12 col-sm-3 col-form-label text-sm-right">Age</label>
+                                    <div class="col-12 col-sm-8 col-lg-6">
+                                        {{ form_widget(utilisateurFrom.age) }}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-12 col-sm-3 col-form-label text-sm-right">Adresse</label>
+                                    <div class="col-12 col-sm-8 col-lg-6">
+                                        {{ form_widget(utilisateurFrom.adresse) }}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-6 col-form-label text-sm-right">Veuillez choisir trois images de profil:</label>
+                                    <div class="col-sm-8">
+                                        <div class="custom-controls-stacked">
+                                            <div class="custom-file">
+                                                {{ form_widget(utilisateurFrom.imageFile1) }}
+                                                <label class="custom-file-label" for="customFileLang">Sélectionner le fichier </label>
+                                            </div>
+                                            <div class="custom-file">
+                                                {{ form_widget(utilisateurFrom.imageFile2) }}
+                                                <label class="custom-file-label" for="customFileLang">Sélectionner le fichier </label>
+                                            </div>
+                                            <div class="custom-file">
+                                                {{ form_widget(utilisateurFrom.imageFile3) }}
+                                                <label class="custom-file-label" for="customFileLang">Sélectionner le fichier </label>
+                                            </div>
+                                            <div id="error-container2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row text-right">
+                                    <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
+                                            {{ form_widget(utilisateurFrom.save) }}
+                                    </div>
+                                </div>
+                            {{ form_end(utilisateurFrom) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+
+
+    <script src="{{ asset('build/vendor/jquery/jquery.min.js') }}"></script>
+    <script type="text/javascript"  src="{{ asset('build/vendor/parsley/parsley.js') }}"></script>
+    <script type="text/javascript"  src="{{ asset('build/js/addUserJs.js') }}"></script>
+{% endblock %}

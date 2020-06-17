@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+        <header id="header" class="fixed-top ">
+        <div class="container d-flex align-items-center">
+
+        <h1 class="logo mr-auto"><a href="{{ path('home') }}">recognized</a></h1>
+
+        <nav class="nav-menu d-none d-lg-block">
+            <ul>
+                <li><a href="{{ path('home') }}">Home</a></li>
+                <li class="drop-down"><a href="">Reconnaissance facial</a>
+                    <ul>
+                        <li><a href="{{ path('image') }}">Image</a></li>
+                        <li><a href="{{ path('video') }}">Video</a></li>
+                    </ul>
+                </li>
+                <li class="active"><a href="{{ path('table-utilisateur') }}">Table d'utilisateur</a></li>
+
+            </ul>
+        </nav>
+
+        <a href="{{ path('add-user') }}" class="get-started-btn scrollto">Ajouter utilisateur</a>
+
+        </div>
+    </header>        
+
+	<div style="height: 72px; background-color: #37517e;"></div>    
+    <main id="main">
+
+        <section id="getStarted" class="getStarted">
+            <div class="container" data-aos="fade-up">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Table d'utilisateurs</h5>
+                         </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                    <div class="row"><div class="col-sm-12 col-md-6"></div>
+                                </div>
+                            </div>
+                            <div class="row"><div class="col-sm-12">
+                                <table id="table-utilisateur" class="table table-striped table-bordered second dataTable" style="width: 100%;" role="grid" aria-describedby="example_info">
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 55px;">Image</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 47px;">CIN</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 54px;">Nom</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 41px;">Prenom</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 26px;">Age</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 49px;">Adresse</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for utilisateur in utilisateurs %}
+                                            <tr role="row" class="odd">
+                                                <td>
+                                                    <div class="m-r-10">
+                                                        <img src="{{ vich_uploader_asset(utilisateur, 'imageFile1') }}" alt="user" class="rounded" width="68px" height="60px">
+                                                    </div>
+                                                </td>
+                                                <td class="sorting_1">{{ utilisateur.cin }}</td>
+                                                <td>{{ utilisateur.nom }}</td>
+                                                <td>{{ utilisateur.prenom }}</td>
+                                                <td>{{ utilisateur.age }}</td>
+                                                <td>{{ utilisateur.adresse }}</td>
+                                            </tr>
+                                        {% endfor %}        
+                                    </tbody>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="{{ asset('build/js/tableJs.js') }}"></script>
+    <script src="{{ asset('build/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('build/vendor/datatables/js/dataTables.bootstrap4.min.js') }}></script>
+    <script src="{{ asset('build/vendor/datatables/js/buttons.bootstrap4.min.js') }}></script>
+    <script src="{{ asset('build/vendor/datatables/js/data-table.js') }}></script>
+
+{% endblock %}

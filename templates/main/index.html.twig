@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <header id="header" class="fixed-top ">
+        <div class="container d-flex align-items-center">
+
+        <h1 class="logo mr-auto"><a href="{{ path('home') }}">recognized</a></h1>
+
+        <nav class="nav-menu d-none d-lg-block">
+            <ul>
+                <li class="active"><a href="{{ path('home') }}">Home</a></li>
+                <li class="drop-down"><a href="">Reconnaissance facial</a>
+                    <ul>
+                        <li><a href="{{ path('image') }}">Image</a></li>
+                        <li><a href="{{ path('video') }}">Video</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ path('table-utilisateur') }}">Table d'utilisateur</a></li>
+
+            </ul>
+        </nav>
+
+        <a href="{{ path('add-user') }}" class="get-started-btn scrollto">Ajouter utilisateur</a>
+
+        </div>
+    </header>  
+
+    <section id="hero" class="d-flex align-items-center">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+                    <h1>Notre objectif est de facilité votre vie</h1>
+                    <div class="d-lg-flex">
+                        <a href="{{ path('add-user') }}" class="btn-get-started scrollto">Ajouter utilisateur</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="{{ asset('build/img/hero-img.png') }}" class="img-fluid animated" alt="">
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <main id="main">
+
+        <section id="getStarted" class="getStarted">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Bienvenue</h2>
+                </div>
+
+                <div class="row content">
+                    <div class="col-lg-6">
+                        <p>
+                            Bienvenue sur notre application recognized une des première au niveau du monde dans le domaine de la reconnaissance facial.
+                            Notre application vous permet :
+                        </p>
+                        <ul>
+                            <li><i class="ri-check-double-line"></i> Repérer tous les visages soit dans une image ou dans un selfie video.</li>
+                            <li><i class="ri-check-double-line"></i> Fournir plusieurs informations sur les utilisateurs détecter.</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0">
+                        <p>
+                            Réaliser votre premier pas pour decouvrir la technologie par choisir le mode qui vous convient.<br>
+                            Commencer maintenant.
+                        </p>
+                        <a href="/image" class="btn-learn-more">Image</a>
+                        <a href="/video" class="btn-learn-more">Video</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        
+    </main>
+
+{% endblock %}

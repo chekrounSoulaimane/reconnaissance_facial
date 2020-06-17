@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}recognized{% endblock %}</title>
+        <link rel="stylesheet"  href="{{ asset('build/vendor/bootstrap/css/bootstrap.min.css') }}">
+        <link rel="stylesheet"  href="{{ asset('build/vendor/icofont/icofont.min.css') }}">
+        <link rel="stylesheet"  href="{{ asset('build/css/style.css') }}">
+        
+        <script src="{{ asset('build/vendor/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('build/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        {% block javascripts %}{% endblock %}
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+
+        {% block body %}{% endblock %}
+
+        <script src="{{ asset('build/js/main.js') }}"></script>
+
+    </body>
+</html>
